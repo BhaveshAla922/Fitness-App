@@ -1,10 +1,12 @@
-package com.fitness.userservice.user;
+package com.fitness.userservice.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, String> {
+public interface UsersRepository extends JpaRepository<UsersEntity, String> {
+
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
+    
 }

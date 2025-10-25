@@ -1,4 +1,4 @@
-package com.fitness.userservice.user.dto;
+package com.fitness.userservice.users.dto;
 
 import com.fitness.userservice.enums.UserRole;
 

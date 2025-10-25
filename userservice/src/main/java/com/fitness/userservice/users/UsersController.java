@@ -1,8 +1,8 @@
-package com.fitness.userservice.user;
+package com.fitness.userservice.users;
 
-import com.fitness.userservice.user.dto.CreateUserRequest;
-import com.fitness.userservice.user.dto.UpdateUserRequest;
-import com.fitness.userservice.user.dto.UserResponse;
+import com.fitness.userservice.users.dto.CreateUserRequest;
+import com.fitness.userservice.users.dto.UpdateUserRequest;
+import com.fitness.userservice.users.dto.UserResponse;
 
 import jakarta.validation.Valid;
 import java.util.List;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/v1/users")
-public class UserController {
+public class UsersController {
 
     @Autowired
-    private UserService userService;
+    private UsersService userService;
 
     @GetMapping()
     public ResponseEntity<List<UserResponse>> getAllUsers() {
@@ -50,4 +50,5 @@ public class UserController {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
+    
 }

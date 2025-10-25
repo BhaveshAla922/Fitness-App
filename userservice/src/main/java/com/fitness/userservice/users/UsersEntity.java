@@ -1,4 +1,4 @@
-package com.fitness.userservice.user;
+package com.fitness.userservice.users;
 
 import com.fitness.userservice.enums.UserRole;
 
@@ -19,7 +19,7 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 @Data
-public class UserEntity {
+public class UsersEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

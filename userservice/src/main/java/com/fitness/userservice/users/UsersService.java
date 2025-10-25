@@ -1,27 +1,27 @@
-package com.fitness.userservice.user;
+package com.fitness.userservice.users;
 
-import com.fitness.userservice.user.dto.CreateUserRequest;
-import com.fitness.userservice.user.dto.UpdateUserRequest;
-import com.fitness.userservice.user.dto.UserResponse;
+import com.fitness.userservice.users.dto.CreateUserRequest;
+import com.fitness.userservice.users.dto.UpdateUserRequest;
+import com.fitness.userservice.users.dto.UserResponse;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UsersService {
 
     // Respositories
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
 
     // Mappers
     @Autowired
-    private UserMapper userMapper;
+    private UsersMapper userMapper;
 
     public List<UserResponse> getAllUsers() {
 
-        List<UserEntity> users = userRepository.findAll();
+        List<UsersEntity> users = userRepository.findAll();
         return users.stream()
                 .map(userMapper::toUserResponse)
                 .toList();
@@ -30,7 +30,7 @@ public class UserService {
 
     public UserResponse getUser(String userId) {
 
-        UserEntity user = userRepository.findById(userId)
+        UsersEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         UserResponse userResponse = userMapper.toUserResponse(user);
@@ -50,8 +50,8 @@ public class UserService {
             throw new IllegalArgumentException("Username already exists. Please choose a different username.");
         }
 
-        UserEntity user = userMapper.toUser(userRequest);
-        UserEntity createdUser = userRepository.save(user);
+        UsersEntity user = userMapper.toUser(userRequest);
+        UsersEntity createdUser = userRepository.save(user);
         UserResponse userResponse = userMapper.toUserResponse(createdUser);
 
         return userResponse;
@@ -59,7 +59,7 @@ public class UserService {
     }
 
     public UserResponse updateUser(String userId, UpdateUserRequest userRequest) {
-        UserEntity existingUser = userRepository.findById(userId)
+        UsersEntity existingUser = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (userRepository.existsByEmail(userRequest.getEmail()) && !userRequest.getEmail().equals(existingUser.getEmail())) {
@@ -74,12 +74,12 @@ public class UserService {
         // Use MapStruct to update only non-null fields
         userMapper.updateUser(userRequest, existingUser);
 
-        UserEntity updatedUser = userRepository.save(existingUser);
+        UsersEntity updatedUser = userRepository.save(existingUser);
         return userMapper.toUserResponse(updatedUser);
     }
 
     public void deleteUser(String userId) {
-        UserEntity existingUser = userRepository.findById(userId)
+        UsersEntity existingUser = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         userRepository.delete(existingUser);
     }
