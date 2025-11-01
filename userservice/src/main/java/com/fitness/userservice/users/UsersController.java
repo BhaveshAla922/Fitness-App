@@ -1,6 +1,5 @@
 package com.fitness.userservice.users;
 
-import com.fitness.userservice.base.ApiVersioning;
 import com.fitness.userservice.users.dto.CreateUserRequest;
 import com.fitness.userservice.users.dto.FindAllUsersRequest;
 import com.fitness.userservice.users.dto.PaginatedUsersResponse;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @Tag(name = "Users")
-@ApiVersioning
 @RequestMapping("/users")
 public class UsersController {
 
