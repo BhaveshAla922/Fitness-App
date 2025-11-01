@@ -2,7 +2,7 @@ package com.fitness.userservice.users;
 
 import com.fitness.userservice.users.dto.CreateUserRequest;
 import com.fitness.userservice.users.dto.UpdateUserRequest;
-import com.fitness.userservice.users.dto.UserResponse;
+import com.fitness.userservice.users.dto.UsersResponse;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
@@ -11,7 +11,7 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface UsersMapper {
 
-    UserResponse toUserResponse(UsersEntity user);
+    UsersResponse toUserResponse(UsersEntity user);
 
     @org.mapstruct.Mapping(target = "id", ignore = true)
     @org.mapstruct.Mapping(target = "version", ignore = true)

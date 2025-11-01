@@ -2,7 +2,7 @@ version: '3.8'
 
 name: fitness_app
 services:
-  db:
+  userservice_db:
     image: postgres:15-alpine
     container_name: userservice_db
     environment:

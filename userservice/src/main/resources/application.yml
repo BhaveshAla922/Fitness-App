@@ -12,3 +12,9 @@ spring:
         hibernate:
             ddl-auto: update
         database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui:
+    path: /api/docs
+  api-docs:
+    path: /api/openapi

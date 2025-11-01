@@ -1,31 +1,34 @@
 package com.fitness.userservice.users.dto;
 
+import com.fitness.userservice.base.BaseService.PaginationConfig;
 import com.fitness.userservice.base.decorators.EnumValidator;
 import com.fitness.userservice.enums.UserEnums.UserRoles;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class CreateUserRequest {
+public class FindAllUsersRequest implements PaginationConfig {
+
+    @Schema(description = "Page number")
+    private Integer page;
+
+    @Schema(description = "Number of records per page")
+    private Integer limit;
+
+    @Schema(description = "Sort by field")
+    private String sortBy;
+
+    @Schema(description = "User ID")
+    private String id;
 
     @Schema(description = "User Email")
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
     private String email;
 
     @Schema(description = "Username")
-    @NotBlank(message = "Username is required")
     @Size(max = 64, message = "Username is too long. Please use a shorter username.")
     private String username;
-    
-    @Schema(description = "Password")
-    @NotBlank(message = "Password is required")
-    @Size(max = 128, message = "Password is too long. Please use a shorter password.")
-    private String password;
 
     @Schema(description = "User First Name")
     @Size(max = 64, message = "First name is too long. Please use a nickname or shorter first name.")
@@ -36,8 +39,17 @@ public class CreateUserRequest {
     private String lastName;
 
     @Schema(description = "User Role")
-    @NotBlank(message = "Role is required")
     @EnumValidator(enumClass = UserRoles.class, message = "The role you have provided is invalid.")
     private String role;
-    
+
+    @Override
+    public String[] getSortableFields() {
+        return new String[]{"id", "email", "username", "firstName", "lastName", "role"};
+    }
+
+    @Override
+    public String[] getFilterableFields() {
+        return new String[]{"id", "email", "username", "firstName", "lastName", "role"};
+    }
+
 }

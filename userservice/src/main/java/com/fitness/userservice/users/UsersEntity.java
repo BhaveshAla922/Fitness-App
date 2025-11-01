@@ -1,29 +1,19 @@
 package com.fitness.userservice.users;
 
-import com.fitness.userservice.enums.UserRole;
+import com.fitness.userservice.base.BaseEntity;
+import com.fitness.userservice.enums.UserEnums.UserRoles;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
-import java.time.LocalDateTime;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import lombok.Data;
 
 @Entity
 @Table(name = "users")
 @Data
-public class UsersEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+public class UsersEntity extends BaseEntity {
 
     @Column(unique=true, nullable=false, length=64)
     private String email;
@@ -41,15 +31,6 @@ public class UsersEntity {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role;
-
-    @Version
-    private int version;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private UserRoles role;
 
 }

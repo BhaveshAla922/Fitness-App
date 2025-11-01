@@ -1,4 +1,4 @@
-package com.fitness.userservice.enums;
+package com.fitness.userservice.base.decorators;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -16,10 +16,12 @@ public class EnumValidatorImpl implements ConstraintValidator<EnumValidator, Str
     public boolean isValid(String value, ConstraintValidatorContext context) {
         if (value == null)
             return true;
+
         for (Enum<?> e : enumClass.getEnumConstants()) {
             if (e.name().equals(value))
                 return true;
         }
+        
         return false;
     }
 
