@@ -1,0 +1,53 @@
+version: '3.8'
+
+name: fitness_app
+services:
+  userservice_db:
+    image: postgres:15-alpine
+    container_name: userservice_db
+    networks:
+      - fitness_app
+    environment:
+      POSTGRES_DB: userservice
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5440:5432"
+    volumes:
+      - userservice_db:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d userservice"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  activityservice_db:
+    image: mongo:6.0.5
+    container_name: activityservice_db
+    networks:
+      - fitness_app
+    environment:
+      MONGO_INITDB_DATABASE: activityservice
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "5555:27017"
+    volumes:
+      - activityservice_db:/data/db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongo", "--username", "admin", "--password", "password", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  userservice_db:
+    driver: local
+  activityservice_db:
+    driver: local
+
+networks:
+  fitness_app:
+    driver: bridge

@@ -1,6 +1,6 @@
 package com.fitness.userservice.users;
 
-import com.fitness.userservice.base.BaseService;
+import com.fitness.baseservice.BaseService;
 import com.fitness.userservice.users.dto.CreateUserRequest;
 import com.fitness.userservice.users.dto.FindAllUsersRequest;
 import com.fitness.userservice.users.dto.PaginatedUsersResponse;
@@ -8,7 +8,6 @@ import com.fitness.userservice.users.dto.UpdateUserRequest;
 import com.fitness.userservice.users.dto.UsersResponse;
 
 import java.lang.reflect.Field;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

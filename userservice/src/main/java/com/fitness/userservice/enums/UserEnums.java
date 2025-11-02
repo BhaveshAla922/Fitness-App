@@ -1,6 +1,6 @@
 package com.fitness.userservice.enums;
 
-import com.fitness.userservice.base.BaseEnum;
+import com.fitness.baseservice.BaseEnum;
 
 public class UserEnums {
 
@@ -21,6 +21,22 @@ public class UserEnums {
         private final String label;
 
         UserRoles(String label) {
+            this.label = label;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+    }
+
+    public enum UserStatus implements BaseEnum {
+        ACTIVE("Active"),
+        INACTIVE("Inactive"),
+        DELETED("Deleted");
+
+        private final String label;
+
+        UserStatus(String label) {
             this.label = label;
         }
 

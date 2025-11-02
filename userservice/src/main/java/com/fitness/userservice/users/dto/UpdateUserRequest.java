@@ -1,6 +1,6 @@
 package com.fitness.userservice.users.dto;
 
-import com.fitness.userservice.base.decorators.EnumValidator;
+import com.fitness.baseservice.decorators.EnumValidator;
 import com.fitness.userservice.enums.UserEnums.UserRoles;
 
 import io.swagger.v3.oas.annotations.media.Schema;

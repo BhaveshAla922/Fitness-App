@@ -2,11 +2,21 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-UserserviceApplication<userservice>",
+            "name": "Spring Boot - User Service",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.fitness.userservice.UserserviceApplication",
             "projectName": "userservice",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot - Activity Service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fitness.activityservice.ActivityserviceApplication",
+            "projectName": "activityservice",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

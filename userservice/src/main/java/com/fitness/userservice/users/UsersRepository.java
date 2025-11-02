@@ -1,6 +1,6 @@
 package com.fitness.userservice.users;
 
-import com.fitness.userservice.base.BaseRepository;
+import com.fitness.baseservice.BaseRepository;
 
 public interface UsersRepository extends BaseRepository<UsersEntity, String> {
 

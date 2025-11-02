@@ -1,0 +1,11 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: activityservice
+
+  data:
+    mongodb:
+      uri: mongodb://admin:password@localhost:5555/activityservice
+      database: activityservice

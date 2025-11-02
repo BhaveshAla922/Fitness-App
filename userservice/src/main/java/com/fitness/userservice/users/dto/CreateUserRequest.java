@@ -1,6 +1,6 @@
 package com.fitness.userservice.users.dto;
 
-import com.fitness.userservice.base.decorators.EnumValidator;
+import com.fitness.baseservice.decorators.EnumValidator;
 import com.fitness.userservice.enums.UserEnums.UserRoles;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +18,6 @@ public class CreateUserRequest {
     private String email;
 
     @Schema(description = "Username")
-    @NotBlank(message = "Username is required")
     @Size(max = 64, message = "Username is too long. Please use a shorter username.")
     private String username;
     

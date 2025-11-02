@@ -1,20 +1,16 @@
+server:
+  port: 8091
+
 spring:
-    application:
-        name: userservice
+  application:
+    name: userservice
 
-    datasource:
-        url: jdbc:postgresql://localhost:5440/userservice
-        username: admin
-        password: password
-    
-    jpa:
-        show-sql: true
-        hibernate:
-            ddl-auto: update
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5440/userservice
+    username: admin
+    password: password
 
-springdoc:
-  swagger-ui:
-    path: /api/docs
-  api-docs:
-    path: /api/openapi
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
